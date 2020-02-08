@@ -6,7 +6,9 @@
 
   var express = require("express");
   const fs = require('fs') //allows us to read different files
+  var mongojs = require("mongojs");
   // Sets up the Express App
+
   // =============================================================
   var app = express();
   var PORT = process.env.PORT || 3000;
@@ -15,6 +17,17 @@
   app.use(express.json());
   // Static directory
   app.use(express.static("public"));
+
+  // Database configuration
+  var databaseUrl = "userdb";
+  var collections = ["users"];
+
+  var db = mongojs(databaseUrl, collections);
+
+  db.on("error", function(error) {
+    console.log("Database error:", error);
+  });
+
   // Routes
   // =============================================================
   // require("./app/routes/api-routes.js")(app);
