@@ -1,3 +1,26 @@
+
+
+//Photo api 
+var uploadPhoto = $("#upload")
+
+
+$(document).on('click', "#upload", function (event) {
+  event.preventDefault();
+  console.log('listening to upload photolistening to upload photolistening to upload photo');
+  const apikey = 'AnBtXR1PTouMhw0LPPcyAz';
+  const client = filestack.init(apikey);
+  const options = {
+    maxFiles: 20,
+    uploadInBackground: false,
+    onOpen: () => console.log('opened!'),
+    onUploadDone: (res) => console.log(res),
+  };
+  client.picker(options).open();
+});
+
+
+
+
 $(function () {
   // Remove Search if user Resets Form or hits Escape!
 $('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function(event) {

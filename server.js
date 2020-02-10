@@ -1,16 +1,38 @@
-
-  
   
   // const stripe = require('stripe')(pk_test_0uwz6cLFxSQZi0pFYpzjhFQ500rdecdAox)
   // var elements = stripe.elements()
 
   var express = require("express");
   const fs = require('fs') //allows us to read different files
-  var mongojs = require("mongojs");
-  // Sets up the Express App
+  // var mongojs = require("mongojs");
+  // // Sets up the Express App
+  // var mongoose = require('mongoose'); 
+  // var cors = require('cors')
+
+  var bodyParser = require('body-parser')
+  var app = express();
+
+  //mongo: 
+  // app.use(bodyParser.json())
+  // app.use(cors())
+  // app.use(bodyParser.urlencoded({ extended: false }))
+
+  
+  //connecting to mongoose: 
+  // mongoose.connect('mongodb://localhost/loginsdb')
+  
+  // var connection = mongoose.connection;
+  
+  // connection.on('connected', function() { 
+  //   console.log('connected to db')
+  // })
+
+  // //adds - mongo 
+  // var Users = require('./app/routes/Users')
+  // app.use('/users', Users)
+
 
   // =============================================================
-  var app = express();
   var PORT = process.env.PORT || 3000;
   // Sets up the Express app to handle data parsing
   app.use(express.urlencoded({ extended: true }));
@@ -19,14 +41,17 @@
   app.use(express.static("public"));
 
   // Database configuration
-  var databaseUrl = "userdb";
-  var collections = ["users"];
+  // var databaseUrl = "userdb";
+  // var collections = ["users"];
 
-  var db = mongojs(databaseUrl, collections);
+  // var db = mongojs(databaseUrl, collections);
 
-  db.on("error", function(error) {
-    console.log("Database error:", error);
-  });
+  // db.on("error", function(error) {
+  //   console.log("Database error:", error);
+  // });
+
+  
+
 
   // Routes
   // =============================================================
@@ -144,4 +169,3 @@
 
   
   // app.listen(3000)
-  
